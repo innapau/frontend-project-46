@@ -1,4 +1,4 @@
-name: Lint
+name: Personal checks
 
 on:
   - push
@@ -12,19 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm lint
+      - run: make install
+      - run: make lint
   test:
     name: Test (jest)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm test
+      - run: make install
+      - run: make test
   coverage:
     name: CodeClimate coverage
     runs-on: ubuntu-latest
     steps:
+      - run: make install
       - name: Test and publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
