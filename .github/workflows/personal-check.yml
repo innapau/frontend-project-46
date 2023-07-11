@@ -14,15 +14,18 @@ jobs:
       - uses: actions/checkout@v3
       - run: npm install
       - run: npm lint
-    test:
-      name: Test (jest)
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - run: npm install
-        - run: npm test
+  test:
+    name: Test (jest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install
+      - run: npm test
   coverage:
-      - name: Test & publish code coverage
+    name: CodeClimate coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test and publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
         uses: paambaati/codeclimate-action@v4.0.0
