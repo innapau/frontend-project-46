@@ -25,7 +25,6 @@ jobs:
     name: CodeClimate coverage
     runs-on: ubuntu-latest
     steps:
-      - run: make install
       - name: Test and publish code coverage
         # Publish code coverage on Code Climate
         # https://github.com/paambaati/codeclimate-action
