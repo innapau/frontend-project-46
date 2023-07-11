@@ -1,7 +1,6 @@
 import { readFileSync } from 'node:fs';
-import path, { dirname } from 'node:path';
+import path from 'node:path';
 import _ from 'lodash';
-import { fileURLToPath } from 'node:url';
 
 const getJsonObj = (filePath) => {
   const normalizedPath = path.resolve(filePath);
