@@ -1,16 +1,9 @@
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
 import _ from 'lodash';
-
-const getJsonObj = (filePath) => {
-  const normalizedPath = path.resolve(filePath);
-  const rawData = readFileSync(normalizedPath);
-  return JSON.parse(rawData);
-};
+import parseFile from './parsers.js';
 
 const getDiff = (first, second) => {
-  const firstObj = getJsonObj(first);
-  const secondObj = getJsonObj(second);
+  const firstObj = parseFile(first);
+  const secondObj = parseFile(second);
   const resultKeys = [...new Set([...Object.keys(firstObj), ...Object.keys(secondObj)])];
   const sortedKeys = _.sortBy(resultKeys);
   const resultArr = [];

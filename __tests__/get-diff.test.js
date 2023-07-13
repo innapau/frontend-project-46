@@ -1,5 +1,5 @@
 // @ts-check
-import { expect, test } from '@jest/globals';
+import { describe, expect, test } from '@jest/globals';
 import { fileURLToPath } from 'node:url';
 import path, { dirname } from 'node:path';
 import getDiff from '../src/getDiff.js';
@@ -16,6 +16,11 @@ const result = `{
   + verbose: true
 }`;
 
-test('getDiff', () => {
-  expect(getDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toBe(result);
+describe('getDiff', () => {
+  test('getDiff from JSON files', () => {
+    expect(getDiff(getFixturePath('file1.json'), getFixturePath('file2.json'))).toBe(result);
+  });
+  test('getDiff from YAML files', () => {
+    expect(getDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'))).toBe(result);
+  });
 });
